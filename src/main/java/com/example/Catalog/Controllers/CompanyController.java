@@ -8,6 +8,7 @@ import com.example.Catalog.Models.CompanyModel;
 import com.example.Catalog.Services.CompanyService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,16 @@ return service.saveCompany(company);
     @GetMapping(path = "/{id}")
     public Optional<CompanyModel> getForId(@PathVariable("id") Long id){
         return service.getForId(id);
+    }
+
+    @DeleteMapping(path = "/delete/{id}")
+    public void deleteData(@PathVariable("id") Long id){
+        service.deleteData(id);
+    }
+
+    @GetMapping(path ="/search/{name}")
+    public ArrayList<CompanyModel> searchForName(@PathVariable("name") String name){
+        return service.searchForName(name);
     }
    
   

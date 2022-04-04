@@ -6,7 +6,6 @@ import java.util.Optional;
 import com.example.Catalog.Models.CompanyModel;
 import com.example.Catalog.Repositories.RepCompany;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +14,24 @@ public class CompanyService {
     @Autowired
     RepCompany companyRep;
 
-    public CompanyModel saveCompany(CompanyModel company){
+    public CompanyModel saveCompany(CompanyModel company) {
         return companyRep.save(company);
     }
 
-    public ArrayList<CompanyModel> getCompany(){
-        return (ArrayList<CompanyModel>)companyRep.findAll();
+    public ArrayList<CompanyModel> getCompany() {
+        return (ArrayList<CompanyModel>) companyRep.findAll();
     }
 
-    public Optional<CompanyModel> getForId(Long id){
+    public void deleteData(Long id) {
+        companyRep.deleteById(id);
+    }
+
+    public Optional<CompanyModel> getForId(Long id) {
         return companyRep.findById(id);
-
     }
 
-    
+    public ArrayList<CompanyModel> searchForName(String name) {
+        return (ArrayList<CompanyModel>) companyRep.findByName(name);
+    }
 
-   
 }
-
