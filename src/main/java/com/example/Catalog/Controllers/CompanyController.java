@@ -1,6 +1,5 @@
 package com.example.Catalog.Controllers;
 
-
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -25,42 +24,45 @@ public class CompanyController {
     @Autowired
     CompanyService service;
 
+    //Metodo para Agrergar un documento
     @PostMapping()
-    public CompanyModel saveCompany(@RequestBody CompanyModel company){
-return service.saveCompany(company);
+    public CompanyModel saveCompany(@RequestBody CompanyModel company) {
+        return service.saveCompany(company);
     }
 
+    //Metodolo Para Listar todos los documentos
     @GetMapping()
-    public ArrayList<CompanyModel> getCompany(){
+    public ArrayList<CompanyModel> getCompany() {
         return service.getCompany();
     }
 
+    //Metodo para obtener un documento de acuerdo al id
     @GetMapping(path = "/{id}")
-    public Optional<CompanyModel> getForId(@PathVariable("id") Long id){
+    public Optional<CompanyModel> getForId(@PathVariable("id") Long id) {
         return service.getForId(id);
     }
 
+    //Metodo para eliminar un documento por el id
     @DeleteMapping(path = "/delete/{id}")
-    public String deleteData(@PathVariable("id") Long id){
+    public String deleteData(@PathVariable("id") Long id) {
         boolean ok = this.service.deleteData(id);
-        if (ok){
+        if (ok) {
             return "Se eliminó el usuario con id " + id;
-        }else{
+        } else {
             return "No pudo eliminar el usuario con id" + id;
         }
     }
 
+    //Metodo para actualizar un documento por el id
     @PutMapping(path = "/update/{id}")
-    public CompanyModel updateData(@PathVariable("id") Long id, @RequestBody CompanyModel company){
-       return service.updateData(id, company);
+    public CompanyModel updateData(@PathVariable("id") Long id, @RequestBody CompanyModel company) {
+        return service.updateData(id, company);
     }
 
-    @GetMapping(path ="/search/{name}")
-    public ArrayList<CompanyModel> searchForName(@PathVariable("name") String name){
+    //Metodo para otener los documentos por el nombre de la compañia
+    @GetMapping(path = "/search/{name}")
+    public ArrayList<CompanyModel> searchForName(@PathVariable("name") String name) {
         return service.searchForName(name);
     }
-   
-  
-    
-}
 
+}
