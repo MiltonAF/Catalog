@@ -22,10 +22,21 @@ public class CompanyService {
         return (ArrayList<CompanyModel>) companyRep.findAll();
     }
 
-    public void deleteData(Long id) {
-        companyRep.deleteById(id);
+    public boolean deleteData(Long id) {
+        try{
+            companyRep.deleteById(id);
+            return true;
+        }catch(Exception err){
+            return false;
+        }
     }
 
+    public CompanyModel updateData(Long id,  CompanyModel company){
+        return companyRep.save(company);
+        
+    }
+
+  
     public Optional<CompanyModel> getForId(Long id) {
         return companyRep.findById(id);
     }

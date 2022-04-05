@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepCompany extends MongoRepository<CompanyModel, Long> {
     ArrayList<CompanyModel> findByName(String name);
+   
+
 }
