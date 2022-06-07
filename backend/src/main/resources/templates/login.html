@@ -14,16 +14,16 @@
                 <h2>Iniciar Session</h2>
                 <form action="" method="post">
                     <div class="inputBx">
-                        <input type="text" placeholder="Usuario">
+                        <input type="text" placeholder="Usuario" id="username">
                         <i class="fa-solid fa-user-large"></i>
                     </div>
                     <div class="inputBx">
-                        <input type="password" placeholder="Contraseña">
+                        <input type="password" placeholder="Contraseña" id="password">
                         <i class="fa-solid fa-key"></i>
                     </div>
                     <label for="" class="remeber"><input type="checkbox" name="" id="">Recordame</label>
                     <div class="inputBx">
-                        <input type="button" onclick="location.href='profile.html'" value="Entrar">
+                        <input type="submit" onclick="getLogin();" value="Entrar">
                     </div>
                 </form>
                 <p>olvide mi <a href="">Contraseña</a></p>
@@ -36,6 +36,7 @@
     </footer>
     <script src="../static/js/head.js"></script>
     <script src="../static/js/nav-footer.js"></script>
+    <script src="../static/js/login.js"></script>
     
     <script src="https://kit.fontawesome.com/994fe1cfb9.js" crossorigin="anonymous"></script>
 </body>

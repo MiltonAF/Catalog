@@ -1,11 +1,10 @@
-class nav extends HTMLElement{
-    constructor(){
-        super();
-    }
+class nav extends HTMLElement {
+  constructor() {
+    super();
+  }
 
-    connectedCallback(){
-        
-        this.innerHTML = `
+  connectedCallback() {
+    this.innerHTML = `
         <link rel="stylesheet" href="../static/css/nav.css">
         <div class="nav">
         <ul>
@@ -26,11 +25,9 @@ class nav extends HTMLElement{
         </ul>
     </div>
     <script src="../static/js/nav.js"></script>
-    <script src="https://kit.fontawesome.com/994fe1cfb9.js" crossorigin="anonymous"></script>
     `;
-        this.style.color = "blue";
-        this.style.fontFamily = "sans-serif";
-    }
+   
+  }
 }
 
 window.customElements.define("nav-footer", nav);
