@@ -1,25 +1,33 @@
 import axios from 'axios'
 import React,{ useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import md5 from 'md5'
 
-const URI = 'http://localhost:8080/catalogs/company'
+
+const URI = 'http://localhost:8080/company'
 
 const SingUp = () => {
-    const [name, setName] = useState('')
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [phone, setPhone] = useState('')
-    const [address, setAddress] = useState('')
-    const navigate = useNavigate()
+     const [name, setName] = useState('')
+     const [username, setUsername] = useState('')
+     const [email, setEmail] = useState('')
+     const [password, setPassword] = useState('')
+     const [phone, setPhone] = useState('')
+     const [address, setAddress] = useState('')
+     const navigate = useNavigate()
 
-    // //procedimiento guardar
-    const store = async (e) => {
-       e.preventDefault()
-        await axios.post(URI, { name: name, username: username, email: email, password: md5(password), phone: phone, address: address })
-        navigate('/')
-    }
+     // //procedimiento guardar
+     const store = async (e) => {
+        e.preventDefault()
+        console.log(name)
+         await axios.post(URI, { name: name, username: username, email: email, password: md5(password), phone: phone, address: address })
+         .then((res) => {
+            console.log(res)
+           })
+          .catch((err) => {
+            console.log(err)
+         });
+         //navigate('/')
+     }
 
     return (
         <div>
@@ -43,7 +51,8 @@ const SingUp = () => {
                         <i class="fa-solid fa-user"></i>
                         <input type='text'
                             placeholder='Email'
-                            
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}                           
                            
                         ></input>
                     </div>
@@ -51,27 +60,40 @@ const SingUp = () => {
                         <i class="fa-solid fa-user"></i>
                         <input type='number'
                             placeholder='Telefono'
+                            value={phone}
+                           onChange={(e) => setPhone(e.target.value)}
                            
                         ></input>
                     </div>
                     <div className='text-field'>
                         <i class="fa-solid fa-user"></i>
                         <input type='text'
-                            placeholder='Dirrecion'>
+                            placeholder='Dirrecion'
+                           value={address}
+                           onChange={(e) => setAddress(e.target.value)}
+                            >
                            
                         </input>
                     </div>
                     <div className='text-field'>
                         <i class="fa-solid fa-user"></i>
                         <input type='text'
-                            placeholder='Usuario'>
+                            placeholder='Usuario'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            >
+                               
                           
                         </input>
                     </div>
                     <div className='text-field'>
                         <i class="fa-solid fa-key"></i>
                         <input type='password'
-                            placeholder='Contraseña'>
+                            placeholder='Contraseña'
+                            value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                            >
+                                
                             
                         </input>
                     </div>
@@ -79,7 +101,8 @@ const SingUp = () => {
                 </div>
                 <div className='form-footer'>
                     <button type='submit' className='btn'>Guardar</button>
-                    <a href="/singup" className='btn'>Iniciar Session</a>
+                    <Link to={'/singin'} className='btn'>Iniciar Session</Link>
+
 
                 </div>
 
